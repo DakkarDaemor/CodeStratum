@@ -20,8 +20,22 @@
       {
         "command": "codestratum.openPanel",
         "title": "CodeStratum: Open Panel"
+      },
+      {
+        "command": "codestratum.openSettings",
+        "title": "CodeStratum: Settings",
+        "icon": "$(gear)"
       }
     ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "codestratum.openSettings",
+          "when": "view == codestratum.panel",
+          "group": "navigation"
+        }
+      ]
+    },
     "viewsContainers": {
       "secondarySidebar": [
         {

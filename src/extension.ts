@@ -24,6 +24,9 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.commands.registerCommand('codestratum.status', () => runStatus()),
     vscode.commands.registerCommand('codestratum.openPanel', () => {
       vscode.commands.executeCommand('workbench.view.extension.codestratum');
+    }),
+    vscode.commands.registerCommand('codestratum.openSettings', () => {
+      vscode.commands.executeCommand('workbench.action.openSettings', '@ext:codestratum.codestratum');
     })
   );
 
