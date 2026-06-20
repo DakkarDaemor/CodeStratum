@@ -26,7 +26,7 @@ export function activate(context: vscode.ExtensionContext) {
       vscode.commands.executeCommand('workbench.view.extension.codestratum');
     }),
     vscode.commands.registerCommand('codestratum.openSettings', () => {
-      vscode.commands.executeCommand('workbench.action.openSettings', '@ext:codestratum.codestratum');
+      vscode.commands.executeCommand('workbench.action.openSettings', '@ext:DakkarDaemor.codestratum');
     })
   );
 
@@ -157,6 +157,11 @@ class CodeStratumViewProvider implements vscode.WebviewViewProvider {
           const error = err instanceof Error ? err.message : String(err);
           webviewView.webview.postMessage({ type: 'planError', error });
         }
+        return;
+      }
+
+      if (msg.type === 'openSettings') {
+        vscode.commands.executeCommand('workbench.action.openSettings', '@ext:DakkarDaemor.codestratum');
         return;
       }
 

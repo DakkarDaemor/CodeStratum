@@ -18,8 +18,8 @@ export function getPanelHtml(webview: vscode.Webview): string {
     --warn: #f59e0b;
     --error: #ef4444;
     --done: #22c55e;
-    --text: #c8d0dc;
-    --text-dim: #5a6478;
+    --text: #e4eaf2;
+    --text-dim: #8896aa;
     --mono: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
     --sans: system-ui, -apple-system, sans-serif;
   }
@@ -64,9 +64,22 @@ export function getPanelHtml(webview: vscode.Webview): string {
     background: var(--text-dim);
     margin-left: auto;
     transition: background 0.3s;
+    flex-shrink: 0;
   }
   .status-dot.ready { background: var(--accent); box-shadow: 0 0 6px var(--accent); }
   .status-dot.working { background: var(--warn); box-shadow: 0 0 6px var(--warn); animation: pulse 1s infinite; }
+  .btn-gear {
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0 0 0 8px;
+    transition: color 0.2s;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .btn-gear:hover { color: var(--text); }
 
   @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
 
@@ -304,6 +317,7 @@ export function getPanelHtml(webview: vscode.Webview): string {
   <span class="header-logo">CodeStratum</span>
   <span class="header-sub" id="cacheStatus">no index</span>
   <div class="status-dot" id="statusDot"></div>
+  <button class="btn-gear" onclick="openSettings()" title="CodeStratum Settings">⚙</button>
 </div>
 
 <div class="init-banner" id="initBanner">
@@ -401,6 +415,10 @@ export function getPanelHtml(webview: vscode.Webview): string {
     document.getElementById('execLog').textContent = '';
     document.getElementById('taskInput').value = '';
     setState(false);
+  }
+
+  function openSettings() {
+    vscode.postMessage({ type: 'openSettings' });
   }
 
   function applyResult(id) {

@@ -53,28 +53,29 @@
           "name": "CodeStratum"
         }
       ]
-    }
-  },
-  "configuration": {
-    "title": "CodeStratum",
-    "properties": {
-      "codestratum.annotatorModel": {
-        "type": "string",
-        "default": "gpt-5-mini",
-        "description": "Copilot model family for module annotation (Init phase)"
-      },
-      "codestratum.plannerModel": {
-        "type": "string",
-        "default": "MAI-Code-1-Flash",
-        "description": "Copilot model family for task planning (Plan phase)"
-      },
-      "codestratum.executorModel": {
-        "type": "string",
-        "default": "gpt-5.3-codex",
-        "description": "Copilot model family for task execution (Execute phase)"
+    },
+    "configuration": {
+      "title": "CodeStratum",
+      "properties": {
+        "codestratum.annotatorModel": {
+          "type": "string",
+          "default": "gpt-5-mini",
+          "description": "Copilot model family for module annotation (Init phase)"
+        },
+        "codestratum.plannerModel": {
+          "type": "string",
+          "default": "MAI-Code-1-Flash",
+          "description": "Copilot model family for task planning (Plan phase)"
+        },
+        "codestratum.executorModel": {
+          "type": "string",
+          "default": "gpt-5.3-codex",
+          "description": "Copilot model family for task execution (Execute phase)"
+        }
       }
     }
   },
+  "publisher": "DakkarDaemor",
   "scripts": {
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
