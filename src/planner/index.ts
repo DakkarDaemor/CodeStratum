@@ -5,10 +5,8 @@ export async function planTask(
   userTask: string,
   cache: CartoCache
 ): Promise<PlannerOutput> {
-  const [model] = await vscode.lm.selectChatModels({
-    vendor: 'copilot',
-    family: 'claude-sonnet-4-6', // reasoning model
-  });
+  const family = vscode.workspace.getConfiguration('codestratum').get<string>('plannerModel', 'MAI-Code-1-Flash');
+  const [model] = await vscode.lm.selectChatModels({ vendor: 'copilot', family });
 
   if (!model) {
     throw new Error('No reasoning model available. Check your Copilot plan.');

@@ -14,10 +14,8 @@ export async function annotateModules(
     ([, mod]) => !mod.semanticSummary && mod.type !== 'test' && mod.type !== 'config'
   );
 
-  const [model] = await vscode.lm.selectChatModels({
-    vendor: 'copilot',
-    family: 'gpt-5-mini', // cheapest available
-  });
+  const family = vscode.workspace.getConfiguration('codestratum').get<string>('annotatorModel', 'gpt-5-mini');
+  const [model] = await vscode.lm.selectChatModels({ vendor: 'copilot', family });
 
   if (!model) {
     vscode.window.showWarningMessage('CodeStratum: No Copilot model available for annotation. Summaries skipped.');

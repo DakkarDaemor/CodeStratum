@@ -9,10 +9,8 @@ export async function executeTask(
   rootPath: string,
   onChunk: (text: string) => void
 ): Promise<string> {
-  const [model] = await vscode.lm.selectChatModels({
-    vendor: 'copilot',
-    family: 'gpt-5.3-codex', // code-specialized model
-  });
+  const family = vscode.workspace.getConfiguration('codestratum').get<string>('executorModel', 'gpt-5.3-codex');
+  const [model] = await vscode.lm.selectChatModels({ vendor: 'copilot', family });
 
   if (!model) {
     throw new Error('No execution model available.');
