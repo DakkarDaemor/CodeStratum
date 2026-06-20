@@ -1,0 +1,58 @@
+{
+  "name": "codestratum",
+  "displayName": "CodeStratum",
+  "description": "Semantic codebase indexing with AI-powered task planning and execution via GitHub Copilot",
+  "version": "0.2.0",
+  "engines": { "vscode": "^1.100.0" },
+  "categories": ["AI", "Other"],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codestratum.init",
+        "title": "CodeStratum: Init — Index & Annotate Project"
+      },
+      {
+        "command": "codestratum.status",
+        "title": "CodeStratum: Status — Show Changed Files"
+      },
+      {
+        "command": "codestratum.openPanel",
+        "title": "CodeStratum: Open Panel"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "codestratum",
+          "title": "CodeStratum",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "codestratum": [
+        {
+          "type": "webview",
+          "id": "codestratum.panel",
+          "name": "CodeStratum"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "pretest": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "^1.100.0",
+    "typescript": "^5.7.0"
+  },
+  "dependencies": {
+    "ts-morph": "^24.0.0"
+  }
+}
